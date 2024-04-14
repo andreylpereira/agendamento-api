@@ -3,7 +3,7 @@ package com.senai.api.dto;
 import java.sql.Date;
 import java.sql.Time;
 
-public class AgendaDto {
+public class AgendamentoDto {
 
 	private int id;
 	private String titulo;
@@ -12,7 +12,7 @@ public class AgendaDto {
 	private String observacao;
 	private String contato;
 
-	public AgendaDto() {
+	public AgendamentoDto() {
 	}
 
 	public int getId() {

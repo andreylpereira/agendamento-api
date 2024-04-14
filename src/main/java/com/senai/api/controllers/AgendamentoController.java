@@ -15,15 +15,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.senai.api.dto.AgendaDto;
-import com.senai.api.services.AgendaService;
+import com.senai.api.dto.AgendamentoDto;
+import com.senai.api.services.AgendamentoService;
 
 @RestController
 @RequestMapping("/api")
-public class AgendaController {
+public class AgendamentoController {
 
 	@Autowired
-	private AgendaService agendaService;
+	private AgendamentoService agendaService;
 
 
 	@GetMapping("/agenda")
@@ -32,20 +32,19 @@ public class AgendaController {
 	    return agendaService.listarAgenda(data, hora);
 	}
 
-
-	@PostMapping("/agenda")
-	public ResponseEntity<?> insertAgenda(@RequestBody AgendaDto agendaDto) {
-		return agendaService.agendar(agendaDto);
+	@PostMapping("/agenda/{usuario_id}")
+	public ResponseEntity<?> insertAgenda(@RequestBody AgendamentoDto agendaDto, @PathVariable int usuario_id) {
+		return agendaService.agendar(agendaDto, usuario_id);
 	}
 
-	@PutMapping("/agenda/{id}")
-	public ResponseEntity<?> UpdateAgenda(@RequestBody AgendaDto agendaDto, @PathVariable int id) {
-		return agendaService.editarAgendamento(agendaDto, id);
+	@PutMapping("/agenda/{agendamento_id}")
+	public ResponseEntity<?> UpdateAgenda(@RequestBody AgendamentoDto agendaDto, @PathVariable int agendamento_id) {
+		return agendaService.editarAgendamento(agendaDto, agendamento_id);
 	}
 
-	@DeleteMapping("/agenda/{id}")
-	public ResponseEntity<?> UpdateAgenda(@PathVariable int id) {
-		return agendaService.desagendar(id);
+	@DeleteMapping("/agenda/{agendamento_id}")
+	public ResponseEntity<?> UpdateAgenda(@PathVariable int agendamento_id) {
+		return agendaService.desagendar(agendamento_id);
 	}
 
 }

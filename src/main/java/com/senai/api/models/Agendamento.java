@@ -7,11 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "agenda")
-public class Agenda {
+public class Agendamento {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,17 +24,22 @@ public class Agenda {
 	private Time hora;
 	private String observacao;
 	private String contato;
+	
+    @ManyToOne
+    @JsonIgnore
+    private Usuario usuario;
 
-	public Agenda() {
+	public Agendamento() {
 	}
 
-	public Agenda(int id, String titulo, Date data, Time hora, String observacao,String contato) {
+	public Agendamento(int id, String titulo, Date data, Time hora, String observacao, String contato, Usuario usuario) {
 		this.id = id;
 		this.titulo = titulo;
 		this.data = data;
 		this.hora = hora;
 		this.observacao = observacao;
 		this.contato = contato;
+		this.usuario = usuario;
 	}
 
 	public int getId() {
@@ -82,4 +90,13 @@ public class Agenda {
 		this.contato = contato;
 	}
 
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	
 }
