@@ -10,6 +10,7 @@ public class AgendaDto {
 	private Date data;
 	private Time hora;
 	private String observacao;
+	private String contato;
 
 	public AgendaDto() {
 	}
@@ -52,6 +53,14 @@ public class AgendaDto {
 
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
+	}
+
+	public String getContato() {
+		return contato;
+	}
+
+	public void setContato(String contato) {
+		this.contato = contato;
 	}
 
 }

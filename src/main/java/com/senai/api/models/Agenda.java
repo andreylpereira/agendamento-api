@@ -20,16 +20,18 @@ public class Agenda {
 	private Date data;
 	private Time hora;
 	private String observacao;
+	private String contato;
 
 	public Agenda() {
 	}
 
-	public Agenda(int id, String titulo, Date data, Time hora, String observacao) {
+	public Agenda(int id, String titulo, Date data, Time hora, String observacao,String contato) {
 		this.id = id;
 		this.titulo = titulo;
 		this.data = data;
 		this.hora = hora;
 		this.observacao = observacao;
+		this.contato = contato;
 	}
 
 	public int getId() {
@@ -70,6 +72,14 @@ public class Agenda {
 
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
+	}
+	
+	public String getContato() {
+		return contato;
+	}
+
+	public void setContato(String contato) {
+		this.contato = contato;
 	}
 
 }
