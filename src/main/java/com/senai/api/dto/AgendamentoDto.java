@@ -11,6 +11,8 @@ public class AgendamentoDto {
 	private Time hora;
 	private String observacao;
 	private String contato;
+	private Time inicioAtendimento;
+	private Time fimAtendimento;
 
 	public AgendamentoDto() {
 	}
@@ -61,6 +63,22 @@ public class AgendamentoDto {
 
 	public void setContato(String contato) {
 		this.contato = contato;
+	}
+
+	public Time getInicioAtendimento() {
+		return inicioAtendimento;
+	}
+
+	public void setInicioAtendimento(Time inicioAtendimento) {
+		this.inicioAtendimento = inicioAtendimento;
+	}
+
+	public Time getFimAtendimento() {
+		return fimAtendimento;
+	}
+
+	public void setFimAtendimento(Time fimAtendimento) {
+		this.fimAtendimento = fimAtendimento;
 	}
 
 }

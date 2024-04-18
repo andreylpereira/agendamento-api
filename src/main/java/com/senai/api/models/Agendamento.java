@@ -24,21 +24,26 @@ public class Agendamento {
 	private Time hora;
 	private String observacao;
 	private String contato;
-	
-    @ManyToOne
-    @JsonIgnore
-    private Usuario usuario;
+	private Time inicioAtendimento;
+	private Time fimAtendimento;
+
+	@ManyToOne
+	@JsonIgnore
+	private Usuario usuario;
 
 	public Agendamento() {
 	}
 
-	public Agendamento(int id, String titulo, Date data, Time hora, String observacao, String contato, Usuario usuario) {
+	public Agendamento(int id, String titulo, Date data, Time hora, String observacao, String contato,
+			Time inicioAtendimento, Time fimAtendimento, Usuario usuario) {
 		this.id = id;
 		this.titulo = titulo;
 		this.data = data;
 		this.hora = hora;
 		this.observacao = observacao;
 		this.contato = contato;
+		this.inicioAtendimento = inicioAtendimento;
+		this.fimAtendimento = fimAtendimento;
 		this.usuario = usuario;
 	}
 
@@ -81,7 +86,7 @@ public class Agendamento {
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
 	}
-	
+
 	public String getContato() {
 		return contato;
 	}
@@ -98,5 +103,20 @@ public class Agendamento {
 		this.usuario = usuario;
 	}
 
-	
+	public Time getInicioAtendimento() {
+		return inicioAtendimento;
+	}
+
+	public void setInicioAtendimento(Time inicioAtendimento) {
+		this.inicioAtendimento = inicioAtendimento;
+	}
+
+	public Time getFimAtendimento() {
+		return fimAtendimento;
+	}
+
+	public void setFimAtendimento(Time fimAtendimento) {
+		this.fimAtendimento = fimAtendimento;
+	}
+
 }
