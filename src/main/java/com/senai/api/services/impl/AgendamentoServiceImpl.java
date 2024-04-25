@@ -60,6 +60,7 @@ public class AgendamentoServiceImpl implements AgendamentoService {
 	}
 
 	@Override
+	//nesta classe o time de fim nao pode ser anterior ao inicio, verificar outras validações
 	public ResponseEntity<?> editarAgendamento(AgendamentoDto agendamentoDto, int agendamento_id) {
 		Optional<Agendamento> dataAgenda = agendamentoRepository.findById(agendamento_id);
 

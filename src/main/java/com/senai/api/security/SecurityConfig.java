@@ -32,7 +32,7 @@ public class SecurityConfig implements WebMvcConfigurer {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-		  http.csrf().disable()
+	    http.csrf().disable()
 	        .exceptionHandling().authenticationEntryPoint(authEntryPoint)
 	        .and()
 	        .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -47,8 +47,20 @@ public class SecurityConfig implements WebMvcConfigurer {
 
 	    http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 	    
+	    http.cors(); // Permitir configurações CORS globais
+	    
 	    return http.build();
 	}
+
+	@Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+            .allowedOrigins("http://localhost:4200")
+            .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+            .allowedHeaders("Authorization", "Content-Type")
+            .allowCredentials(true)
+            .maxAge(3600);
+    }
 
 	@Bean
 	public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfiguration) throws Exception {
@@ -65,8 +77,4 @@ public class SecurityConfig implements WebMvcConfigurer {
 		return new JWTAuthenticationFilter();
 	}
 
-	public void addCorsMappings(CorsRegistry registry) {
-		registry.addMapping("/**").allowedOrigins("http://localhost:4200").allowedMethods("GET", "POST", "PUT",
-				"DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");
-	}
 }

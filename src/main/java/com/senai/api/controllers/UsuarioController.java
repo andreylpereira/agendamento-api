@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.senai.api.dto.UsuarioDto;
 import com.senai.api.services.UsuarioService;
 
+
 @RestController
 @RequestMapping("/api/usuario")
 public class UsuarioController {
