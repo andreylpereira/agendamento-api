@@ -43,7 +43,7 @@ public class AgendamentoServiceImpl implements AgendamentoService {
 	}
 
 	@Override
-	public ResponseEntity<?> agendar(AgendamentoDto agendamentoDto, int usuario_id) {
+	public Agendamento agendar(AgendamentoDto agendamentoDto, int usuario_id) {
 
 		try {
 			Usuario usuario = new Usuario();
@@ -53,9 +53,10 @@ public class AgendamentoServiceImpl implements AgendamentoService {
 			BeanUtils.copyProperties(agendamentoDto, agendamento);
 			agendamento.setUsuario(usuario);
 			agendamentoRepository.save(agendamento);
-			return ResponseEntity.ok("Agendamento realizado com sucesso!");
+			return agendamentoRepository.save(agendamento);
 		} catch (Exception e) {
-			return ResponseEntity.ok("Não foi possível realizar o agendamento.");
+			//tratar
+			return null;
 		}
 	}
 

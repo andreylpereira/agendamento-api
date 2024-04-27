@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.senai.api.dto.AgendamentoDto;
+import com.senai.api.models.Agendamento;
 import com.senai.api.services.AgendamentoService;
 
 @RestController
@@ -34,7 +35,7 @@ public class AgendamentoController {
 	}
 
 	@PostMapping("/agenda/{usuario_id}")
-	public ResponseEntity<?> insertAgenda(@RequestBody AgendamentoDto agendaDto, @PathVariable int usuario_id) {
+	public Agendamento insertAgenda(@RequestBody AgendamentoDto agendaDto, @PathVariable int usuario_id) {
 		return agendaService.agendar(agendaDto, usuario_id);
 	}
 
