@@ -40,12 +40,12 @@ public class AgendamentoController {
 	}
 
 	@PutMapping("/agenda/{agendamento_id}")
-	public ResponseEntity<?> UpdateAgenda(@RequestBody AgendamentoDto agendaDto, @PathVariable int agendamento_id) {
+	public ResponseEntity<?> updateAgenda(@RequestBody AgendamentoDto agendaDto, @PathVariable int agendamento_id) {
 		return agendaService.editarAgendamento(agendaDto, agendamento_id);
 	}
 
 	@DeleteMapping("/agenda/{agendamento_id}")
-	public ResponseEntity<?> UpdateAgenda(@PathVariable int agendamento_id) {
+	public ResponseEntity<?> deleteAgenda(@PathVariable int agendamento_id) {
 		return agendaService.desagendar(agendamento_id);
 	}
 
